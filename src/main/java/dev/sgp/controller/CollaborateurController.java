@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.sgp.entite.BanqueInfo;
 import dev.sgp.entite.Collaborateur;
+import dev.sgp.repository.BanqueRepository;
 import dev.sgp.repository.CollaborateurRepository;
 import dev.sgp.repository.DepartementRepository;
 
@@ -23,6 +25,9 @@ public class CollaborateurController {
 	
 	@Autowired
 	private DepartementRepository depRepo;
+	
+	@Autowired
+	private BanqueRepository banRepo;
 
 	/*
 	@RequestMapping(method = RequestMethod.GET)
@@ -54,10 +59,18 @@ public class CollaborateurController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/{matricule}/banque")
-	public void getBanque(@PathVariable String matricule, @RequestBody Collaborateur newcollab) {
+	public BanqueInfo getBanque(@PathVariable String matricule) {
 		Optional<Collaborateur> oldcollab = this.collaRepo.findByMatricule(matricule);
-		newcollab.setId(oldcollab.get().getId());
-		collaRepo.save(newcollab);
+		return oldcollab.get().getBanqueInfo();
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = "/{matricule}/banque")
+	public void getBanque(@PathVariable String matricule, @RequestBody BanqueInfo banque) {
+		Optional<Collaborateur> oldcollab = this.collaRepo.findByMatricule(matricule);
+		Collaborateur collab = oldcollab.get();
+		collab.setBanqueInfo(banque);
+		collaRepo.save(collab);
 	}
 	
 

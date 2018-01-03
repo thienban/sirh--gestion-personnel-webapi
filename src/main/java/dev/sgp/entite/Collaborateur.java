@@ -76,5 +76,8 @@ public class Collaborateur {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	public BanqueInfo getBanqueInfo() {
+		return banque;
+		// TODO Auto-generated method stub
+	}
 }
