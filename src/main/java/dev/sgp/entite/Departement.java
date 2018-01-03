@@ -19,6 +19,10 @@ public class Departement {
 	@Column(name = "NOM")
 	private String nom;
 
+	public Departement(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getId() {
 		return id;
 	}

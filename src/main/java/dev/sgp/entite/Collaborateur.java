@@ -1,5 +1,6 @@
 package dev.sgp.entite;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,12 +24,13 @@ public class Collaborateur {
 
 	@ManyToOne
 	private Departement departement;
+	
+	@Embedded
+	private BanqueInfo banque;
 
-	private String banque;
-
-	private String bic;
-
-	private String iban;
+	public Collaborateur(String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getId() {
 		return id;
@@ -70,29 +72,9 @@ public class Collaborateur {
 		this.departement = departement;
 	}
 
-	public String getBanque() {
-		return banque;
+	public void setBanqueInfo(BanqueInfo banqueInfo1) {
+		// TODO Auto-generated method stub
+		
 	}
-
-	public void setBanque(String banque) {
-		this.banque = banque;
-	}
-
-	public String getBic() {
-		return bic;
-	}
-
-	public void setBic(String bic) {
-		this.bic = bic;
-	}
-
-	public String getIban() {
-		return iban;
-	}
-
-	public void setIban(String iban) {
-		this.iban = iban;
-	}
-
-
+	
 }

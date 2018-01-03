@@ -53,6 +53,13 @@ public class CollaborateurController {
 		collaRepo.save(newcollab);
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "/{matricule}/banque")
+	public void getBanque(@PathVariable String matricule, @RequestBody Collaborateur newcollab) {
+		Optional<Collaborateur> oldcollab = this.collaRepo.findByMatricule(matricule);
+		newcollab.setId(oldcollab.get().getId());
+		collaRepo.save(newcollab);
+	}
+	
 
 		 	
 
