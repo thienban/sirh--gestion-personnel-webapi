@@ -13,10 +13,10 @@ public class Departement {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "ID")
 	private Integer id;
 	
-	@Column
+	@Column(name = "NOM")
 	private String nom;
 
 	public Integer getId() {
